@@ -1,6 +1,6 @@
 ﻿namespace DicomTransformer
 {
-    partial class AddSite
+    partial class AddSiteForm
     {
         /// <summary>
         /// Required designer variable.
@@ -83,7 +83,7 @@
             this.txtSiteName.Location = new System.Drawing.Point(110, 22);
             this.txtSiteName.Name = "txtSiteName";
             this.txtSiteName.Size = new System.Drawing.Size(131, 20);
-            this.txtSiteName.TabIndex = 1;
+            this.txtSiteName.TabIndex = 0;
             // 
             // txtAETitle
             // 
@@ -97,23 +97,26 @@
             this.txtPort.Location = new System.Drawing.Point(110, 80);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(131, 20);
-            this.txtPort.TabIndex = 1;
+            this.txtPort.TabIndex = 2;
+            this.txtPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSiteNumber_KeyPress);
             // 
             // txtSiteNumber
             // 
             this.txtSiteNumber.Location = new System.Drawing.Point(110, 109);
             this.txtSiteNumber.Name = "txtSiteNumber";
             this.txtSiteNumber.Size = new System.Drawing.Size(131, 20);
-            this.txtSiteNumber.TabIndex = 1;
+            this.txtSiteNumber.TabIndex = 3;
+            this.txtSiteNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSiteNumber_KeyPress);
             // 
             // btnAddSite
             // 
             this.btnAddSite.Location = new System.Drawing.Point(29, 323);
             this.btnAddSite.Name = "btnAddSite";
             this.btnAddSite.Size = new System.Drawing.Size(75, 23);
-            this.btnAddSite.TabIndex = 2;
+            this.btnAddSite.TabIndex = 5;
             this.btnAddSite.Text = "Add";
             this.btnAddSite.UseVisualStyleBackColor = true;
+            this.btnAddSite.Click += new System.EventHandler(this.btnAddSite_Click);
             // 
             // txtMoreInformation
             // 
@@ -121,7 +124,7 @@
             this.txtMoreInformation.Multiline = true;
             this.txtMoreInformation.Name = "txtMoreInformation";
             this.txtMoreInformation.Size = new System.Drawing.Size(212, 122);
-            this.txtMoreInformation.TabIndex = 3;
+            this.txtMoreInformation.TabIndex = 4;
             // 
             // label5
             // 
@@ -137,11 +140,12 @@
             this.btnCancel.Location = new System.Drawing.Point(166, 323);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // AddSite
+            // AddSiteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,7 +163,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Name = "AddSite";
+            this.Name = "AddSiteForm";
             this.Text = "Add SCU Site";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -180,5 +184,6 @@
         private System.Windows.Forms.TextBox txtMoreInformation;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnCancel;
+        
     }
 }

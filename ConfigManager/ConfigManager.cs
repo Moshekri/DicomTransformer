@@ -52,13 +52,14 @@ namespace ConfigManager
         {
             return _conf.SCPPorts;
         }
-        public bool AddSite(string name , string aeTitle,int port , int siteNumber)
+        public bool AddSite(string name , string aeTitle,int port , int siteNumber,string comments)
         {
-            Site site = new Site(name, siteNumber, aeTitle, port);
+            Site site = new Site(name, siteNumber, aeTitle, port,comments);
             var s = _conf.SCUSites.FirstOrDefault(obj => obj.AETitle == aeTitle && obj.SiteNumber == siteNumber && obj.SiteName == name);
             if (s== null)
             {
                 _conf.SCUSites.Add(site);
+                Save();
                 return true;
             }
             throw new SiteExistsExecption($"Site {site.SiteName} already exists ! \r\n No duplicate sites allowed ! ");
@@ -69,9 +70,22 @@ namespace ConfigManager
             if (scp ==0)
             {
                 _conf.SCPPorts.Add(port);
+                Save();
                 return true;
             }
             throw new SCPExsitsException($"An SCP Service Already on port {port} Exists");
+        }
+        public Config GetConfiguration()
+        {
+            return _conf;
+        }
+       void Save()
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            using (var fs = File.Open(ConfigFilePath, FileMode.OpenOrCreate))
+            {
+                bf.Serialize(fs, _conf);
+            }
         }
         
     }

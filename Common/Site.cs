@@ -7,14 +7,17 @@ namespace Common
     {
         public string SiteName { get; set; }
         public string AETitle { get; set; }
-        public string Port { get; set; }
+        public int Port { get; set; }
         public int SiteNumber { get; private set; }
         public string Information { get; set; }
 
-        public Site(string name , int siteNumber,string aeTitle, int port)
+        public Site(string name , int siteNumber,string aeTitle, int port,string comments)
         {
             SiteName = name;
             SiteNumber = siteNumber;
+            AETitle = aeTitle;
+            Port = port;
+            Information = comments;
         }
     }
 }
