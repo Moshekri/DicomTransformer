@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Common;
+using ConfigManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +12,17 @@ using System.Windows.Forms;
 
 namespace DicomTransformer
 {
-    public partial class Form1 : Form
+    public partial class AddSite : Form
     {
-        public Form1()
+        ConfManager _configManager;
+
+        public AddSite()
         {
             InitializeComponent();
+        }
+        public AddSite(ConfManager configManger)
+        {
+            _configManager = configManger;
         }
     }
 }
