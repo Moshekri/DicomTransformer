@@ -45,7 +45,7 @@ namespace DicomSCPService
             // preload dictionary to prevent timeouts
             var dict = DicomDictionary.Default;
 
-           int port =  configuration.SCPPorts[0];
+           int port =int.Parse( ConfigurationManager.AppSettings["OwnListenPort"]);
             if (port == 0)
             {
                 port = 104;

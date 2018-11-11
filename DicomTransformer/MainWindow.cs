@@ -51,7 +51,7 @@ namespace DicomTransformer
             {
                AddSiteForm addSiteForm = new AddSiteForm(bindingSource1);
                var res =  addSiteForm.ShowDialog();
-               
+                configManager.Save();
 
             }
             catch (SiteExistsExecption ex)

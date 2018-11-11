@@ -4,6 +4,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using EvilDICOM;
 using EvilDICOM.Core;
@@ -62,28 +63,39 @@ namespace DicomSCPService
             string newFullPath = "";
             try
             {
-                DICOMObject file = DICOMObject.Read(e.FullPath);
-                logger.Debug($"Read file {e.Name} , it has {file.Elements.Count} elements ");
-                file = accChanger.SetAccessionNumber(file);
-                logger.Debug($"Added accesstion number to  file {e.Name} ,now it has {file.Elements.Count} elements ");
+                lock (this)
+                {
+                    DICOMObject file = DICOMObject.Read(e.FullPath);
+                    logger.Debug($"Read file {e.Name} , it has {file.Elements.Count} elements ");
+                    file = accChanger.SetAccessionNumber(file);
+                    logger.Debug($"Added accesstion number to  file {e.Name} ,now it has {file.Elements.Count} elements ");
 
-                string folder = Path.GetDirectoryName(e.FullPath);
-                string fileName = Path.GetFileName(e.FullPath);
-                fileName = "new_" + fileName;
-                newFullPath = Path.Combine(folder, fileName);
-                file.Write(newFullPath);
-                DicomSCU.Send(newFullPath, targetIp, callingAeTitle, targetAeTitle, targetPort);
+                    string folder = Path.GetDirectoryName(e.FullPath);
+                    folder = Path.Combine(folder, "temp");
+                    string fileName = Path.GetFileName(e.FullPath);
+                    fileName = "new_" + fileName;
+                    newFullPath = Path.Combine(folder, fileName);
+                    File.Delete(e.FullPath);
+                    file.Write(newFullPath);
+                    DicomSCU.Send(newFullPath, targetIp, callingAeTitle, targetAeTitle, targetPort);
+                    Thread.Sleep(1000);
+                }
+                
             }
             catch (Exception ex)
             {
                 logger.Error(ex.Message);
-                File.Move(e.FullPath, Path.Combine(fileWatcherPath, "bad"));
+                //File.Move(e.FullPath, Path.Combine(fileWatcherPath, "bad"));
             }
             finally
             {
-                File.Delete(newFullPath);
+                if (newFullPath != "")
+                {
+                    File.Delete(newFullPath);
+                }
+               
             }
-            File.Delete(e.FullPath);
+           
 
 
         }

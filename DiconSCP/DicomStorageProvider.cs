@@ -51,25 +51,29 @@ namespace DicomSCPService
         }
         public DicomCStoreResponse OnCStoreRequest(DicomCStoreRequest request)
         {
-            string storePath = ConfigurationManager.AppSettings["DicomStorePath"];
-            var path = Path.GetFullPath(storePath);
-            path = Path.Combine(path, Guid.NewGuid().ToString().Substring(0, 7));
-            path = Path.Combine(path) + ".dcm";
-            request.File.Save(path);
-            return new DicomCStoreResponse(request, DicomStatus.Success);
+            lock (this)
+            {
+                string storePath = ConfigurationManager.AppSettings["DicomStorePath"];
+                var path = Path.GetFullPath(storePath);
+                path = Path.Combine(path, Guid.NewGuid().ToString().Substring(0, 12));
+                path = Path.Combine(path) + ".dcm";
+                request.File.Save(path);
+                return new DicomCStoreResponse(request, DicomStatus.Success);
+            }
+            
         }
 
 
         public Task OnReceiveAssociationRequestAsync(DicomAssociation association)
         {
 
-            if (association.CalledAE != "STORESCP")
-            {
-                return SendAssociationRejectAsync(
-                    DicomRejectResult.Permanent,
-                    DicomRejectSource.ServiceUser,
-                    DicomRejectReason.CalledAENotRecognized);
-            }
+            //if (association.CalledAE != "STORESCP")
+            //{
+            //    return SendAssociationRejectAsync(
+            //        DicomRejectResult.Permanent,
+            //        DicomRejectSource.ServiceUser,
+            //        DicomRejectReason.CalledAENotRecognized);
+            //}
 
             foreach (var pc in association.PresentationContexts)
             {
