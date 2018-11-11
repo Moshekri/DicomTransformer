@@ -137,5 +137,11 @@ namespace DicomTransformer
                 dgvSites.Refresh();
             }
         }
+
+        private void btnResetCounter_Click(object sender, EventArgs e)
+        {
+            configuration.Counter = 0;
+            configManager.Save();
+        }
     }
 }

@@ -36,6 +36,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAddNewSite = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnResetCounter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSites)).BeginInit();
             this.panel1.SuspendLayout();
@@ -49,10 +50,9 @@
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(545, 459);
-            this.btnQuit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnQuit.Location = new System.Drawing.Point(409, 373);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(121, 28);
+            this.btnQuit.Size = new System.Drawing.Size(91, 23);
             this.btnQuit.TabIndex = 0;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
@@ -65,25 +65,28 @@
             this.dgvSites.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSites.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSites.Location = new System.Drawing.Point(0, 0);
+            this.dgvSites.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvSites.Name = "dgvSites";
             this.dgvSites.RowTemplate.Height = 24;
             this.dgvSites.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSites.Size = new System.Drawing.Size(864, 225);
+            this.dgvSites.Size = new System.Drawing.Size(648, 183);
             this.dgvSites.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dgvSites);
-            this.panel1.Location = new System.Drawing.Point(0, 29);
+            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(864, 225);
+            this.panel1.Size = new System.Drawing.Size(648, 183);
             this.panel1.TabIndex = 3;
             // 
             // btnAddNewSite
             // 
-            this.btnAddNewSite.Location = new System.Drawing.Point(13, 275);
+            this.btnAddNewSite.Location = new System.Drawing.Point(10, 223);
+            this.btnAddNewSite.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddNewSite.Name = "btnAddNewSite";
-            this.btnAddNewSite.Size = new System.Drawing.Size(105, 53);
+            this.btnAddNewSite.Size = new System.Drawing.Size(79, 43);
             this.btnAddNewSite.TabIndex = 4;
             this.btnAddNewSite.Text = "Add New Site";
             this.btnAddNewSite.UseVisualStyleBackColor = true;
@@ -91,24 +94,35 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(137, 275);
+            this.btnDelete.Location = new System.Drawing.Point(103, 223);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(111, 53);
+            this.btnDelete.Size = new System.Drawing.Size(83, 43);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete Selected Site";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnResetCounter
+            // 
+            this.btnResetCounter.Location = new System.Drawing.Point(202, 226);
+            this.btnResetCounter.Name = "btnResetCounter";
+            this.btnResetCounter.Size = new System.Drawing.Size(83, 40);
+            this.btnResetCounter.TabIndex = 6;
+            this.btnResetCounter.Text = "Reset Counter";
+            this.btnResetCounter.UseVisualStyleBackColor = true;
+            this.btnResetCounter.Click += new System.EventHandler(this.btnResetCounter_Click);
+            // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 521);
+            this.ClientSize = new System.Drawing.Size(648, 423);
+            this.Controls.Add(this.btnResetCounter);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAddNewSite);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnQuit);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainWindow";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
@@ -129,6 +143,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAddNewSite;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnResetCounter;
     }
 }
 

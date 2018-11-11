@@ -53,12 +53,30 @@ namespace DicomSCPService
         {
             lock (this)
             {
-                string storePath = ConfigurationManager.AppSettings["DicomStorePath"];
-                var path = Path.GetFullPath(storePath);
-                path = Path.Combine(path, Guid.NewGuid().ToString().Substring(0, 12));
-                path = Path.Combine(path) + ".dcm";
-                request.File.Save(path);
-                return new DicomCStoreResponse(request, DicomStatus.Success);
+                try
+                {
+                    string guid = Guid.NewGuid().ToString();
+
+                    string storePath = ConfigurationManager.AppSettings["DicomStorePath"];
+                    var actualPath = Path.GetFullPath(storePath);
+                    string tempPath =Path.GetDirectoryName(actualPath).ToString()+"\\dicomfiles\\temp\\"+ guid + ".dcm";
+                    if (!Directory.Exists(Path.GetDirectoryName(tempPath)))
+                    {
+                        Directory.CreateDirectory(Path.GetDirectoryName(tempPath));
+                    }
+                    actualPath = Path.Combine(actualPath, guid);
+                    actualPath = Path.Combine(actualPath) + ".dcm";
+
+                    request.File.Save(actualPath);
+                    request.File.Save(tempPath);
+
+                    return new DicomCStoreResponse(request, DicomStatus.Success);
+                }
+                catch (Exception ex)
+                {
+
+                    throw;
+                }
             }
             
         }

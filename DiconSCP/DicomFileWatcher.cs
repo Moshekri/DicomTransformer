@@ -28,7 +28,7 @@ namespace DicomSCPService
         string callingAeTitle;
         int targetPort;
         string fileWatcherPath;
-        
+
 
         public DicomFileWatcher(string path)
         {
@@ -47,7 +47,7 @@ namespace DicomSCPService
             fsw = new FileSystemWatcher(path, "*.dcm");
             fsw.Created += NewFileCreated;
             accChanger = new AccessionNumberChanger();
-            
+
         }
 
         public void StartWatching()
@@ -60,42 +60,62 @@ namespace DicomSCPService
         }
         private void NewFileCreated(object sender, FileSystemEventArgs e)
         {
-            string newFullPath = "";
+
+            DICOMObject file = null;
             try
             {
                 lock (this)
                 {
-                    DICOMObject file = DICOMObject.Read(e.FullPath);
+                    Thread.Sleep(500);
+                    try
+                    {
+                        file = DICOMObject.Read(e.FullPath);
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        logger.Error(ex.Message);
+                    }
+
                     logger.Debug($"Read file {e.Name} , it has {file.Elements.Count} elements ");
                     file = accChanger.SetAccessionNumber(file);
-                    logger.Debug($"Added accesstion number to  file {e.Name} ,now it has {file.Elements.Count} elements ");
+                    var accNum = file.Elements.Find(el => el.Tag.CompleteID == "00080050");
+                    logger.Debug($"Added accesstion number {accNum.DData.ToString()} to  file {e.Name} ,now it has {file.Elements.Count} elements ");
 
-                    string folder = Path.GetDirectoryName(e.FullPath);
-                    folder = Path.Combine(folder, "temp");
+                    string currentFolder = Path.GetDirectoryName(e.FullPath);
+                    string tempFolder = Path.Combine(currentFolder, "temp");
                     string fileName = Path.GetFileName(e.FullPath);
-                    fileName = "new_" + fileName;
-                    newFullPath = Path.Combine(folder, fileName);
-                    File.Delete(e.FullPath);
-                    file.Write(newFullPath);
-                    DicomSCU.Send(newFullPath, targetIp, callingAeTitle, targetAeTitle, targetPort);
-                    Thread.Sleep(1000);
+                    string newFileName = e.FullPath + "_New";
+                    string tempFileName = Path.Combine(tempFolder, fileName);
+                    file.Write(newFileName);
+
+
+                    try
+                    {
+                        DicomSCU scu = new DicomSCU();
+                        scu.Send(newFileName, targetIp, callingAeTitle, targetAeTitle, targetPort);
+                        File.Delete(e.FullPath);
+                        File.Delete(tempFileName);
+                        File.Delete(newFileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex.Message);
+                        throw;
+                    }
+
+
+                    Thread.Sleep(500);
                 }
-                
+
             }
             catch (Exception ex)
             {
                 logger.Error(ex.Message);
-                //File.Move(e.FullPath, Path.Combine(fileWatcherPath, "bad"));
             }
-            finally
-            {
-                if (newFullPath != "")
-                {
-                    File.Delete(newFullPath);
-                }
-               
-            }
-           
+
+
 
 
         }
