@@ -66,12 +66,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessionNumberChanger.cs" />
+    <Compile Include="DicomFileWatcher.cs" />
     <Compile Include="DicomSCPSvc.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DicomSCPSvc.Designer.cs">
       <DependentUpon>DicomSCPSvc.cs</DependentUpon>
     </Compile>
+    <Compile Include="DicomSCU.cs" />
     <Compile Include="DicomStorageProvider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +88,16 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{186496cb-da23-41f0-9ba1-6c130052f8e4}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConfigManager\ConfigManager.csproj">
+      <Project>{1814e1c0-3657-4256-bea9-5bca050e0dcb}</Project>
+      <Name>ConfigManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\fo-dicom.Desktop.4.0.0\build\net45\fo-dicom.Desktop.targets" Condition="Exists('..\packages\fo-dicom.Desktop.4.0.0\build\net45\fo-dicom.Desktop.targets')" />

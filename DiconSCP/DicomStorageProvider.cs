@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dicom;
 using Dicom.Log;
 using Dicom.Network;
+using Common;
+using ConfigManager;
 
-namespace DiconSCP
+namespace DicomSCPService
 {
     class DicomStorageProvider : DicomService, IDicomServiceProvider, IDicomCStoreProvider, IDicomCEchoProvider
     {
         private static readonly DicomTransferSyntax[] AcceptedTransferSyntaxes = new DicomTransferSyntax[]
-            {
+    {
                DicomTransferSyntax.ExplicitVRLittleEndian,
                DicomTransferSyntax.ExplicitVRBigEndian,
                DicomTransferSyntax.ImplicitVRLittleEndian
-            };
-
+    };
         private static readonly DicomTransferSyntax[] AcceptedImageTransferSyntaxes = new DicomTransferSyntax[]
         {
                // Lossless
@@ -38,13 +40,29 @@ namespace DiconSCP
                DicomTransferSyntax.ImplicitVRLittleEndian
         };
 
+        Config configuration;
+        ConfManager confManager;
+
         public DicomStorageProvider(INetworkStream stream, Encoding fallbackEncoding, Logger log)
             : base(stream, fallbackEncoding, log)
         {
+            confManager = new ConfManager(ConfigurationManager.AppSettings["ConfigFilePath"]);
+            configuration = confManager.GetConfiguration();
         }
+        public DicomCStoreResponse OnCStoreRequest(DicomCStoreRequest request)
+        {
+            string storePath = ConfigurationManager.AppSettings["DicomStorePath"];
+            var path = Path.GetFullPath(storePath);
+            path = Path.Combine(path, Guid.NewGuid().ToString().Substring(0, 7));
+            path = Path.Combine(path) + ".dcm";
+            request.File.Save(path);
+            return new DicomCStoreResponse(request, DicomStatus.Success);
+        }
+
 
         public Task OnReceiveAssociationRequestAsync(DicomAssociation association)
         {
+
             if (association.CalledAE != "STORESCP")
             {
                 return SendAssociationRejectAsync(
@@ -61,43 +79,22 @@ namespace DiconSCP
 
             return SendAssociationAcceptAsync(association);
         }
-
         public Task OnReceiveAssociationReleaseRequestAsync()
         {
             return SendAssociationReleaseResponseAsync();
         }
-
         public void OnReceiveAbort(DicomAbortSource source, DicomAbortReason reason)
         {
+            Logger.Debug(reason.ToString());
         }
-
         public void OnConnectionClosed(Exception exception)
         {
+            Logger.Error(exception.Message);
         }
-
-        public DicomCStoreResponse OnCStoreRequest(DicomCStoreRequest request)
-        {
-            ConfigurationManager.AppSettings["DicomStorePath"]
-            var studyUid = request.Dataset.GetSingleValue<string>(DicomTag.StudyInstanceUID);
-            var instUid = request.SOPInstanceUID.UID;
-
-            var path = Path.GetFullPath(Program.StoragePath);
-            path = Path.Combine(path, studyUid);
-
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-
-            path = Path.Combine(path, instUid) + ".dcm";
-
-            request.File.Save(path);
-
-            return new DicomCStoreResponse(request, DicomStatus.Success);
-        }
-
         public void OnCStoreRequestException(string tempFileName, Exception e)
         {
-            // let library handle logging and error response
+            Logger.Error(e.Message);
         }
-
         public DicomCEchoResponse OnCEchoRequest(DicomCEchoRequest request)
         {
             return new DicomCEchoResponse(request, DicomStatus.Success);

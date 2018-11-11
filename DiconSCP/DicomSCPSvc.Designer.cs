@@ -1,4 +1,4 @@
-﻿namespace DiconSCP
+﻿namespace DicomSCPService
 {
     partial class DicomSCPSvc
     {

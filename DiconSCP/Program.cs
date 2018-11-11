@@ -5,7 +5,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiconSCP
+namespace DicomSCPService
 {
     static class Program
     {
@@ -14,12 +14,21 @@ namespace DiconSCP
         /// </summary>
         static void Main()
         {
+
+#if DEBUG
+
+            DicomSCPSvc service = new DicomSCPSvc();
+            service.OnDebug(null);
+
+
+#else
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
                 new DicomSCPSvc()
             };
             ServiceBase.Run(ServicesToRun);
+#endif
         }
     }
 }
