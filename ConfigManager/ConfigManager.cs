@@ -79,7 +79,7 @@ namespace ConfigManager
         {
             return _conf;
         }
-       void Save()
+      public void Save()
         {
             BinaryFormatter bf = new BinaryFormatter();
             using (var fs = File.Open(ConfigFilePath, FileMode.OpenOrCreate))

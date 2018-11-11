@@ -29,138 +29,106 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnAddNewSite = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.btnQuit = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dgvSites = new System.Windows.Forms.DataGridView();
-            this.configBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sCUSitesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.siteNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aETitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.portDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.siteNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.informationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddNewSite = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSites)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sCUSitesBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnAddNewSite
-            // 
-            this.btnAddNewSite.Location = new System.Drawing.Point(27, 199);
-            this.btnAddNewSite.Name = "btnAddNewSite";
-            this.btnAddNewSite.Size = new System.Drawing.Size(91, 23);
-            this.btnAddNewSite.TabIndex = 0;
-            this.btnAddNewSite.Text = "Add New Site";
-            this.btnAddNewSite.UseVisualStyleBackColor = true;
-            this.btnAddNewSite.Click += new System.EventHandler(this.btnAddNewSite_Click);
             // 
             // notifyIcon1
             // 
             this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyIcon1.BalloonTipText = "Dicom Transformer";
             this.notifyIcon1.Text = "Dicom Transformer";
-            this.notifyIcon1.Visible = true;
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(409, 373);
+            this.btnQuit.Location = new System.Drawing.Point(545, 459);
+            this.btnQuit.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(91, 23);
+            this.btnQuit.Size = new System.Drawing.Size(121, 28);
             this.btnQuit.TabIndex = 0;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
-            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            this.btnQuit.Click += new System.EventHandler(this.Exit);
             // 
             // dgvSites
             // 
-            this.dgvSites.AutoGenerateColumns = false;
+            this.dgvSites.AllowUserToAddRows = false;
+            this.dgvSites.AllowUserToDeleteRows = false;
             this.dgvSites.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSites.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.siteNameDataGridViewTextBoxColumn,
-            this.aETitleDataGridViewTextBoxColumn,
-            this.portDataGridViewTextBoxColumn,
-            this.siteNumberDataGridViewTextBoxColumn,
-            this.informationDataGridViewTextBoxColumn});
-            this.dgvSites.DataSource = this.sCUSitesBindingSource;
-            this.dgvSites.Location = new System.Drawing.Point(27, 37);
+            this.dgvSites.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSites.Location = new System.Drawing.Point(0, 0);
             this.dgvSites.Name = "dgvSites";
-            this.dgvSites.Size = new System.Drawing.Size(600, 147);
-            this.dgvSites.TabIndex = 1;
+            this.dgvSites.RowTemplate.Height = 24;
+            this.dgvSites.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSites.Size = new System.Drawing.Size(864, 225);
+            this.dgvSites.TabIndex = 2;
             // 
-            // configBindingSource
+            // panel1
             // 
-            this.configBindingSource.DataSource = typeof(Common.Config);
+            this.panel1.Controls.Add(this.dgvSites);
+            this.panel1.Location = new System.Drawing.Point(0, 29);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(864, 225);
+            this.panel1.TabIndex = 3;
             // 
-            // sCUSitesBindingSource
+            // btnAddNewSite
             // 
-            this.sCUSitesBindingSource.DataMember = "SCUSites";
-            this.sCUSitesBindingSource.DataSource = this.configBindingSource;
+            this.btnAddNewSite.Location = new System.Drawing.Point(13, 275);
+            this.btnAddNewSite.Name = "btnAddNewSite";
+            this.btnAddNewSite.Size = new System.Drawing.Size(105, 53);
+            this.btnAddNewSite.TabIndex = 4;
+            this.btnAddNewSite.Text = "Add New Site";
+            this.btnAddNewSite.UseVisualStyleBackColor = true;
+            this.btnAddNewSite.Click += new System.EventHandler(this.btnAddNewSite_Click);
             // 
-            // siteNameDataGridViewTextBoxColumn
+            // btnDelete
             // 
-            this.siteNameDataGridViewTextBoxColumn.DataPropertyName = "SiteName";
-            this.siteNameDataGridViewTextBoxColumn.HeaderText = "SiteName";
-            this.siteNameDataGridViewTextBoxColumn.Name = "siteNameDataGridViewTextBoxColumn";
-            // 
-            // aETitleDataGridViewTextBoxColumn
-            // 
-            this.aETitleDataGridViewTextBoxColumn.DataPropertyName = "AETitle";
-            this.aETitleDataGridViewTextBoxColumn.HeaderText = "AETitle";
-            this.aETitleDataGridViewTextBoxColumn.Name = "aETitleDataGridViewTextBoxColumn";
-            // 
-            // portDataGridViewTextBoxColumn
-            // 
-            this.portDataGridViewTextBoxColumn.DataPropertyName = "Port";
-            this.portDataGridViewTextBoxColumn.HeaderText = "Port";
-            this.portDataGridViewTextBoxColumn.Name = "portDataGridViewTextBoxColumn";
-            // 
-            // siteNumberDataGridViewTextBoxColumn
-            // 
-            this.siteNumberDataGridViewTextBoxColumn.DataPropertyName = "SiteNumber";
-            this.siteNumberDataGridViewTextBoxColumn.HeaderText = "SiteNumber";
-            this.siteNumberDataGridViewTextBoxColumn.Name = "siteNumberDataGridViewTextBoxColumn";
-            this.siteNumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // informationDataGridViewTextBoxColumn
-            // 
-            this.informationDataGridViewTextBoxColumn.DataPropertyName = "Information";
-            this.informationDataGridViewTextBoxColumn.HeaderText = "Information";
-            this.informationDataGridViewTextBoxColumn.Name = "informationDataGridViewTextBoxColumn";
+            this.btnDelete.Location = new System.Drawing.Point(137, 275);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(111, 53);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "Delete Selected Site";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 423);
-            this.Controls.Add(this.dgvSites);
-            this.Controls.Add(this.btnQuit);
+            this.ClientSize = new System.Drawing.Size(864, 521);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAddNewSite);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnQuit);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainWindow";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSites)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sCUSitesBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnAddNewSite;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.DataGridView dgvSites;
-        private System.Windows.Forms.DataGridViewTextBoxColumn siteNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aETitleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn portDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn siteNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn informationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource sCUSitesBindingSource;
-        private System.Windows.Forms.BindingSource configBindingSource;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnAddNewSite;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 

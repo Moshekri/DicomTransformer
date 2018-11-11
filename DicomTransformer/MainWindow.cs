@@ -19,11 +19,26 @@ namespace DicomTransformer
         ConfManager configManager;
         bool CloseApp = false;
         Config configuration;
-
+            
         public MainWindow()
         {
             InitializeComponent();
             icon = new NotifyIcon();
+        }
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            SetUpNotificationIcon();
+            string filePath = ConfigurationManager.AppSettings["ConfigFilePath"];
+            LoadConfiguration(filePath);
+
+
+            bindingSource1.DataSource = configuration; 
+            bindingSource1.DataMember = "SCUSites";
+          
+            dgvSites.DataSource =bindingSource1 ;
+            
+            
+
         }
         private void LoadConfiguration(string filePath)
         {
@@ -34,8 +49,10 @@ namespace DicomTransformer
         {
             try
             {
-                AddSiteForm addSiteForm = new AddSiteForm(configManager);
-                addSiteForm.ShowDialog();
+               AddSiteForm addSiteForm = new AddSiteForm(bindingSource1);
+               var res =  addSiteForm.ShowDialog();
+               
+
             }
             catch (SiteExistsExecption ex)
             {
@@ -71,17 +88,9 @@ namespace DicomTransformer
             WindowState = FormWindowState.Normal;
             notifyIcon1.Visible = false;
         }
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            string filePath = ConfigurationManager.AppSettings["ConfigFilePath"];
-            LoadConfiguration(filePath);
-            BindingSource dataSource = new BindingSource(configuration, "SCUSites");
-            dgvSites.DataSource = dataSource;
-            SetUpNotificationIcon();
-        }
         private void SetUpNotificationIcon()
         {
-            notifyIcon1.Icon = new Icon(@"f:\Documents\Visual Studio 2017\Projects\DicomTransformer\DicomTransformer\icon.ico");
+            notifyIcon1.Icon = new Icon(@"icon.ico");
             notifyIcon1.ContextMenu = new ContextMenu();
             MenuItem open = new MenuItem("Open", Open_Click);
             MenuItem Quit = new MenuItem("Quit Application", Exit);
@@ -113,13 +122,20 @@ namespace DicomTransformer
                 e.Cancel = true;
                 WindowState = FormWindowState.Minimized;
             }
-          
-        }
-        private void btnQuit_Click(object sender, EventArgs e)
-        {
-            CloseApp = true;
-            this.Close();
-        }
 
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var res =MessageBox.Show("Are You Sure You Want To Delete This Row" , "Confirm Delete",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (res==DialogResult.Yes)
+            {
+               var site =  (Site)dgvSites.SelectedRows[0].DataBoundItem;
+                bindingSource1.Remove(site);
+                configManager.Save();
+               
+                dgvSites.Update();
+                dgvSites.Refresh();
+            }
+        }
     }
 }

@@ -10,7 +10,10 @@ namespace Common
         public int Port { get; set; }
         public int SiteNumber { get; private set; }
         public string Information { get; set; }
+        public Site()
+        {
 
+        }
         public Site(string name , int siteNumber,string aeTitle, int port,string comments)
         {
             SiteName = name;

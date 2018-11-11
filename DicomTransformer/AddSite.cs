@@ -14,16 +14,21 @@ namespace DicomTransformer
 {
     public partial class AddSiteForm : Form
     {
-        ConfManager _configManager;
+        
         Timer t;
+        Site _tempSite;
+
+
+        BindingSource _bs;
         public AddSiteForm()
         {
             InitializeComponent();
 
         }
-        public AddSiteForm(ConfManager configManger) : this()
+        public AddSiteForm(BindingSource bs) : this()
         {
-            _configManager = configManger;
+            _bs = bs;
+            
             t = new Timer();
             t.Interval = 100;
             t.Tick += T_Tick;
@@ -46,8 +51,10 @@ namespace DicomTransformer
             var port = int.Parse(txtPort.Text);
             var siteName = txtSiteName.Text;
             var sitenumber = int.Parse(txtSiteNumber.Text);
-            _configManager.AddSite(siteName, aeTitle, port, sitenumber, comments);
+            _tempSite = new Site(siteName, sitenumber, aeTitle, port, comments);
+            _bs.Add(_tempSite);
             this.DialogResult = DialogResult.OK;
+            
             t.Stop();
             this.Close();
         }
