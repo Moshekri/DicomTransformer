@@ -130,7 +130,7 @@ namespace DicomTransformer
         }
         private void SetUpNotificationIcon()
         {
-            notifyIcon1.Icon = new Icon(@"icon.ico");
+           // notifyIcon1.Icon = new Icon(@"icon.ico");
             notifyIcon1.ContextMenu = new ContextMenu();
             MenuItem open = new MenuItem("Open", Open_Click);
             MenuItem Quit = new MenuItem("Quit Application", Exit);

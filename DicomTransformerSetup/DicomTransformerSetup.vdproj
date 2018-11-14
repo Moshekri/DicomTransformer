@@ -15,20 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0AB5CA92DDC04CA09D96F078851DC077"
+        "MsmKey" = "8:_18526FED98498CE011526A48E2E684D3"
         "OwnerKey" = "8:_52A3C60C767B48F09B7F0A376CF4C4BE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0AB5CA92DDC04CA09D96F078851DC077"
+        "MsmKey" = "8:_18526FED98498CE011526A48E2E684D3"
         "OwnerKey" = "8:_C5E4E10CF7984FC4A3E39BCDADA37302"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0AB5CA92DDC04CA09D96F078851DC077"
-        "OwnerKey" = "8:_FBFBAAE50F167D3CC4405F25FDEF10FF"
+        "MsmKey" = "8:_18526FED98498CE011526A48E2E684D3"
+        "OwnerKey" = "8:_AD122EDDEB41B6BA00F0AED6876FEEE8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -63,8 +63,14 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7B30F08B61C948BC9A90FC620F380B85"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A3F94C4F791A9D0BC4D0FCEA54C75872"
-        "OwnerKey" = "8:_FBFBAAE50F167D3CC4405F25FDEF10FF"
+        "OwnerKey" = "8:_AD122EDDEB41B6BA00F0AED6876FEEE8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -83,6 +89,18 @@
         {
         "MsmKey" = "8:_A3F94C4F791A9D0BC4D0FCEA54C75872"
         "OwnerKey" = "8:_6322E59430D926AE7A864F697097F490"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AD122EDDEB41B6BA00F0AED6876FEEE8"
+        "OwnerKey" = "8:_52A3C60C767B48F09B7F0A376CF4C4BE"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AD122EDDEB41B6BA00F0AED6876FEEE8"
+        "OwnerKey" = "8:_C5E4E10CF7984FC4A3E39BCDADA37302"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -135,20 +153,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FBFBAAE50F167D3CC4405F25FDEF10FF"
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_52A3C60C767B48F09B7F0A376CF4C4BE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FBFBAAE50F167D3CC4405F25FDEF10FF"
-        "OwnerKey" = "8:_C5E4E10CF7984FC4A3E39BCDADA37302"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_52A3C60C767B48F09B7F0A376CF4C4BE"
+        "OwnerKey" = "8:_AD122EDDEB41B6BA00F0AED6876FEEE8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_18526FED98498CE011526A48E2E684D3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -184,19 +202,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FBFBAAE50F167D3CC4405F25FDEF10FF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A3F94C4F791A9D0BC4D0FCEA54C75872"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0AB5CA92DDC04CA09D96F078851DC077"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -236,6 +242,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -318,14 +332,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0AB5CA92DDC04CA09D96F078851DC077"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_18526FED98498CE011526A48E2E684D3"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_0AB5CA92DDC04CA09D96F078851DC077"
+                    "_18526FED98498CE011526A48E2E684D3"
                     {
                     "Name" = "8:Common.dll"
                     "Attributes" = "3:512"
@@ -411,6 +425,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7B30F08B61C948BC9A90FC620F380B85"
+            {
+            "SourcePath" = "8:..\\DicomTransformer\\Hopstarter-Soft-Scraps-Network-MAC.ico"
+            "TargetName" = "8:Hopstarter-Soft-Scraps-Network-MAC.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_FE2A32F7D5574FA297731834D1C8519A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A3F94C4F791A9D0BC4D0FCEA54C75872"
             {
             "AssemblyRegister" = "3:1"
@@ -425,6 +459,37 @@
                     }
                 }
             "SourcePath" = "8:NLog.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E99DDD70A8E047F9840DCD5E22F9CCDD"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AD122EDDEB41B6BA00F0AED6876FEEE8"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ConfigManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_AD122EDDEB41B6BA00F0AED6876FEEE8"
+                    {
+                    "Name" = "8:ConfigManager.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ConfigManager.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E99DDD70A8E047F9840DCD5E22F9CCDD"
@@ -566,37 +631,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FBFBAAE50F167D3CC4405F25FDEF10FF"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ConfigManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_FBFBAAE50F167D3CC4405F25FDEF10FF"
-                    {
-                    "Name" = "8:ConfigManager.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:ConfigManager.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E99DDD70A8E047F9840DCD5E22F9CCDD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
         }
         "FileType"
         {
@@ -635,24 +669,13 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_8B7AF4E24F2144CE9FAE04B220AAB74F"
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_FE2A32F7D5574FA297731834D1C8519A"
                     {
-                    "Name" = "8:DicomFiles"
-                    "AlwaysCreate" = "11:TRUE"
+                    "Name" = "8:Icons"
+                    "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
-                    "Property" = "8:_C928C7D59BF74CCB8FC84B586CECEB66"
-                        "Folders"
-                        {
-                        }
-                    }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_B5BD508721E84B47A2F0D2AABBB1CFD8"
-                    {
-                    "Name" = "8:Config"
-                    "AlwaysCreate" = "11:TRUE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_FBE34A995FFA41589C8A1F72688E7B9A"
+                    "Property" = "8:_10D7FE5166604B699064DAAC36A0658F"
                         "Folders"
                         {
                         }
@@ -676,7 +699,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Dicom Transformer"
         "ProductCode" = "8:{8975BB33-6919-41EC-B242-3438C1479C6D}"
-        "PackageCode" = "8:{BA35C336-CC3C-4D59-B5AE-8D850D534046}"
+        "PackageCode" = "8:{36F16AED-2CE3-4F63-BD95-6A27868878AE}"
         "UpgradeCode" = "8:{B7739EA8-23E3-4DEA-96A0-69B41FF1DADF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -796,6 +819,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8E2B6879450045C7A84164BAFC59032F"
+            {
+            "Name" = "8:Dicom Transformer Config"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_C5E4E10CF7984FC4A3E39BCDADA37302"
+            "Folder" = "8:_7CE1D8ACC1EB4A00A45D35DA9272F7AB"
+            "WorkingFolder" = "8:_E99DDD70A8E047F9840DCD5E22F9CCDD"
+            "Icon" = "8:_7B30F08B61C948BC9A90FC620F380B85"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -812,262 +849,6 @@
             "Attributes" = "3:1"
                 "Dialogs"
                 {
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_302D46549AD64ED9888CD484D093D8C3"
-                    {
-                    "Sequence" = "3:400"
-                    "DisplayName" = "8:Textboxes   (B)"
-                    "UseDynamicProperties" = "11:TRUE"
-                    "IsDependency" = "11:FALSE"
-                    "SourcePath" = "8:<VsdDialogDir>\\VsdCustomText2Dlg.wid"
-                        "Properties"
-                        {
-                            "BannerBitmap"
-                            {
-                            "Name" = "8:BannerBitmap"
-                            "DisplayName" = "8:#1001"
-                            "Description" = "8:#1101"
-                            "Type" = "3:8"
-                            "ContextData" = "8:Bitmap"
-                            "Attributes" = "3:4"
-                            "Setting" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "BannerText"
-                            {
-                            "Name" = "8:BannerText"
-                            "DisplayName" = "8:#1014"
-                            "Description" = "8:#1114"
-                            "Type" = "3:3"
-                            "ContextData" = "8:"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1214"
-                            "DefaultValue" = "8:#1214"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "BodyText"
-                            {
-                            "Name" = "8:BodyText"
-                            "DisplayName" = "8:#1015"
-                            "Description" = "8:#1115"
-                            "Type" = "3:3"
-                            "ContextData" = "8:"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1215"
-                            "DefaultValue" = "8:#1215"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit1Label"
-                            {
-                            "Name" = "8:Edit1Label"
-                            "DisplayName" = "8:#1046"
-                            "Description" = "8:#1146"
-                            "Type" = "3:3"
-                            "ContextData" = "8:"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1246"
-                            "DefaultValue" = "8:#1246"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit1Property"
-                            {
-                            "Name" = "8:Edit1Property"
-                            "DisplayName" = "8:#1050"
-                            "Description" = "8:#1150"
-                            "Type" = "3:14"
-                            "ContextData" = "8:Public"
-                            "Attributes" = "3:2"
-                            "Setting" = "3:2"
-                            "Value" = "8:EDITB1"
-                            "DefaultValue" = "8:EDITB1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit1Value"
-                            {
-                            "Name" = "8:Edit1Value"
-                            "DisplayName" = "8:#1054"
-                            "Description" = "8:#1154"
-                            "Type" = "3:3"
-                            "ContextData" = "8:"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:"
-                            "DefaultValue" = "8:"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit1Visible"
-                            {
-                            "Name" = "8:Edit1Visible"
-                            "DisplayName" = "8:#1042"
-                            "Description" = "8:#1142"
-                            "Type" = "3:5"
-                            "ContextData" = "8:1;True=1;False=0"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:0"
-                            "Value" = "3:1"
-                            "DefaultValue" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit2Label"
-                            {
-                            "Name" = "8:Edit2Label"
-                            "DisplayName" = "8:#1047"
-                            "Description" = "8:#1147"
-                            "Type" = "3:3"
-                            "ContextData" = "8:"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1247"
-                            "DefaultValue" = "8:#1247"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit2Property"
-                            {
-                            "Name" = "8:Edit2Property"
-                            "DisplayName" = "8:#1051"
-                            "Description" = "8:#1151"
-                            "Type" = "3:14"
-                            "ContextData" = "8:Public"
-                            "Attributes" = "3:2"
-                            "Setting" = "3:2"
-                            "Value" = "8:EDITB2"
-                            "DefaultValue" = "8:EDITB2"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit2Value"
-                            {
-                            "Name" = "8:Edit2Value"
-                            "DisplayName" = "8:#1055"
-                            "Description" = "8:#1155"
-                            "Type" = "3:3"
-                            "ContextData" = "8:"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:"
-                            "DefaultValue" = "8:"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit2Visible"
-                            {
-                            "Name" = "8:Edit2Visible"
-                            "DisplayName" = "8:#1043"
-                            "Description" = "8:#1143"
-                            "Type" = "3:5"
-                            "ContextData" = "8:1;True=1;False=0"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:0"
-                            "Value" = "3:1"
-                            "DefaultValue" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit3Label"
-                            {
-                            "Name" = "8:Edit3Label"
-                            "DisplayName" = "8:#1048"
-                            "Description" = "8:#1148"
-                            "Type" = "3:3"
-                            "ContextData" = "8:"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1248"
-                            "DefaultValue" = "8:#1248"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit3Property"
-                            {
-                            "Name" = "8:Edit3Property"
-                            "DisplayName" = "8:#1052"
-                            "Description" = "8:#1152"
-                            "Type" = "3:14"
-                            "ContextData" = "8:Public"
-                            "Attributes" = "3:2"
-                            "Setting" = "3:2"
-                            "Value" = "8:EDITB3"
-                            "DefaultValue" = "8:EDITB3"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit3Value"
-                            {
-                            "Name" = "8:Edit3Value"
-                            "DisplayName" = "8:#1056"
-                            "Description" = "8:#1156"
-                            "Type" = "3:3"
-                            "ContextData" = "8:"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:"
-                            "DefaultValue" = "8:"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit3Visible"
-                            {
-                            "Name" = "8:Edit3Visible"
-                            "DisplayName" = "8:#1044"
-                            "Description" = "8:#1144"
-                            "Type" = "3:5"
-                            "ContextData" = "8:1;True=1;False=0"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:0"
-                            "Value" = "3:1"
-                            "DefaultValue" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit4Label"
-                            {
-                            "Name" = "8:Edit4Label"
-                            "DisplayName" = "8:#1049"
-                            "Description" = "8:#1149"
-                            "Type" = "3:3"
-                            "ContextData" = "8:"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1249"
-                            "DefaultValue" = "8:#1249"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit4Property"
-                            {
-                            "Name" = "8:Edit4Property"
-                            "DisplayName" = "8:#1053"
-                            "Description" = "8:#1153"
-                            "Type" = "3:14"
-                            "ContextData" = "8:Public"
-                            "Attributes" = "3:2"
-                            "Setting" = "3:2"
-                            "Value" = "8:EDITB4"
-                            "DefaultValue" = "8:EDITB4"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit4Value"
-                            {
-                            "Name" = "8:Edit4Value"
-                            "DisplayName" = "8:#1057"
-                            "Description" = "8:#1157"
-                            "Type" = "3:3"
-                            "ContextData" = "8:"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:"
-                            "DefaultValue" = "8:"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "Edit4Visible"
-                            {
-                            "Name" = "8:Edit4Visible"
-                            "DisplayName" = "8:#1045"
-                            "Description" = "8:#1145"
-                            "Type" = "3:5"
-                            "ContextData" = "8:1;True=1;False=0"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:0"
-                            "Value" = "3:1"
-                            "DefaultValue" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                        }
-                    }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_6806C5105BA841AEAF73C2B9A2957F15"
                     {
                     "Sequence" = "3:300"
@@ -1453,7 +1234,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_52A3C60C767B48F09B7F0A376CF4C4BE"
             {
-            "SourcePath" = "8:..\\DiconSCP\\obj\\Release\\DiconSCP.exe"
+            "SourcePath" = "8:..\\DiconSCP\\obj\\Debug\\DiconSCP.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E99DDD70A8E047F9840DCD5E22F9CCDD"
@@ -1479,12 +1260,12 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8848A1E3F66642758607CBCDDE8CA1D1"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9C680AB069A94A6FBA95F165B65029C9"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_E99DDD70A8E047F9840DCD5E22F9CCDD"
+            "Folder" = "8:_FE2A32F7D5574FA297731834D1C8519A"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1501,7 +1282,7 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:ContentFiles"
-            "OutputProjectGuid" = "8:{186496CB-DA23-41F0-9BA1-6C130052F8E4}"
+            "OutputProjectGuid" = "8:{AD2A4430-E20F-4E66-A19E-0529222972E6}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
@@ -1509,7 +1290,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C5E4E10CF7984FC4A3E39BCDADA37302"
             {
-            "SourcePath" = "8:..\\DicomTransformer\\obj\\Release\\DicomTransformer.exe"
+            "SourcePath" = "8:..\\DicomTransformer\\obj\\Debug\\DicomTransformer.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E99DDD70A8E047F9840DCD5E22F9CCDD"

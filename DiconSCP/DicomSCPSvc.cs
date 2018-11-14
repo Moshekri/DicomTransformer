@@ -50,20 +50,19 @@ namespace DicomSCPService
             string StorePath = ConfigurationManager.AppSettings["DicomStorePath"];
             string tempPath = Path.Combine(StorePath, "temp");
             string badPath = Path.Combine(StorePath, "bad");
-            if (!Directory.Exists(StorePath))
-            {
-                Directory.CreateDirectory(StorePath);
-            }
-            if (!Directory.Exists(tempPath))
-            {
-                Directory.CreateDirectory(tempPath);
-            }
-            if (!Directory.Exists(badPath))
-            {
-                Directory.CreateDirectory(badPath);
-            }
+            CheckDir(StorePath);
+            CheckDir(tempPath);
+            CheckDir(badPath);
+
         }
 
+        private void CheckDir(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+        }
 
         public void OnDebug(string[] args)
         {

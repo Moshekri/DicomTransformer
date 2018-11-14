@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.btnQuit = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -41,13 +42,13 @@
             this.txtNewCounterValue = new System.Windows.Forms.TextBox();
             this.serviceController1 = new System.ServiceProcess.ServiceController();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblCurrentCounter = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRestartService = new System.Windows.Forms.Button();
             this.lblServiceStatus = new System.Windows.Forms.Label();
             this.btnStartService = new System.Windows.Forms.Button();
             this.btnStopService = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblCurrentCounter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSites)).BeginInit();
             this.panel1.SuspendLayout();
@@ -59,6 +60,7 @@
             // 
             this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyIcon1.BalloonTipText = "Dicom Transformer";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "Dicom Transformer";
             // 
             // btnQuit
@@ -159,6 +161,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Accession Number Counter Control";
             // 
+            // lblCurrentCounter
+            // 
+            this.lblCurrentCounter.AutoSize = true;
+            this.lblCurrentCounter.Location = new System.Drawing.Point(22, 102);
+            this.lblCurrentCounter.Name = "lblCurrentCounter";
+            this.lblCurrentCounter.Size = new System.Drawing.Size(0, 17);
+            this.lblCurrentCounter.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Current Counter";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnRestartService);
@@ -210,27 +229,11 @@
             this.btnStopService.UseVisualStyleBackColor = true;
             this.btnStopService.Click += new System.EventHandler(this.btnStopService_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 17);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Current Counter";
-            // 
-            // lblCurrentCounter
-            // 
-            this.lblCurrentCounter.AutoSize = true;
-            this.lblCurrentCounter.Location = new System.Drawing.Point(22, 102);
-            this.lblCurrentCounter.Name = "lblCurrentCounter";
-            this.lblCurrentCounter.Size = new System.Drawing.Size(0, 17);
-            this.lblCurrentCounter.TabIndex = 10;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(775, 521);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -238,9 +241,12 @@
             this.Controls.Add(this.btnAddNewSite);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnQuit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainWindow";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dicom Transformer Config";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
