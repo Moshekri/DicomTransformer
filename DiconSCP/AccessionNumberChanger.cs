@@ -30,11 +30,25 @@ namespace DicomSCPService
             try
             {
                 file = dcmFile;
+                logger.Debug($"Inside Accesstion number creator , processing file...");
                 int counter = config.Counter;
                 logger.Info(counter);
+                int instituteNumber;
+                if (dcmFile == null)
+                {
+                    logger.Debug("SetAccessionNumber dcmFile is null");
+                }
                 var accNumberElement = dcmFile.Elements.FirstOrDefault(e => e.Tag.CompleteID == "00080050");
+
                 var instituteNameElement = dcmFile.Elements.FirstOrDefault(e => e.Tag.CompleteID == "00080080");
-                int instituteNumber = config.SCUSites.FirstOrDefault(e => e.SiteName == instituteNameElement.DData.ToString()).SiteNumber;
+
+               var instituteNumberObject = config.SCUSites.FirstOrDefault(e => e.SiteName == instituteNameElement.DData.ToString());
+                if (instituteNumberObject == null)
+                {
+                    logger.Error($"Could not find matching site name in configuration !! , site on file was: {instituteNameElement.DData.ToString()} ");;
+                    return null;
+                }
+                instituteNumber = instituteNumberObject.SiteNumber;
                 logger.Info($"Recieved file from site {instituteNameElement.DData} , Site number  : {instituteNumber}");
                 StringBuilder sb = new StringBuilder();
                 sb.Append(config.SysType);
@@ -48,6 +62,11 @@ namespace DicomSCPService
                     Tag accNum = new Tag("00080050");
                     ShortString accNumber = new ShortString(accNum, sb.ToString());
                     file.Elements.Add(accNumber);
+                }
+                else
+                {
+                    logger.Info("Accession Number exists  , no changes made");
+                    return file;
                 }
                 config.Counter = config.Counter + 1;
                 logger.Debug($"Counter = {counter}");

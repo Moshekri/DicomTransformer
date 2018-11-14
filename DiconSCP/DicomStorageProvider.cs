@@ -10,6 +10,7 @@ using Dicom.Log;
 using Dicom.Network;
 using Common;
 using ConfigManager;
+using NLog;
 
 namespace DicomSCPService
 {
@@ -42,15 +43,18 @@ namespace DicomSCPService
 
         Config configuration;
         ConfManager confManager;
-
-        public DicomStorageProvider(INetworkStream stream, Encoding fallbackEncoding, Logger log)
+        NLog.Logger logger;
+        public DicomStorageProvider(INetworkStream stream, Encoding fallbackEncoding, Dicom.Log.Logger log)
             : base(stream, fallbackEncoding, log)
         {
             confManager = new ConfManager(ConfigurationManager.AppSettings["ConfigFilePath"]);
             configuration = confManager.GetConfiguration();
+            logger = NLog.LogManager.GetCurrentClassLogger();
+
         }
         public DicomCStoreResponse OnCStoreRequest(DicomCStoreRequest request)
         {
+            logger.Debug($"Recived StoreRequest ");
             lock (this)
             {
                 try
@@ -59,26 +63,39 @@ namespace DicomSCPService
 
                     string storePath = ConfigurationManager.AppSettings["DicomStorePath"];
                     var actualPath = Path.GetFullPath(storePath);
-                    string tempPath =Path.GetDirectoryName(actualPath).ToString()+"\\dicomfiles\\temp\\"+ guid + ".dcm";
+
+                    logger.Debug($"Store path = {actualPath}");
+
+                    string tempPath = Path.GetDirectoryName(actualPath).ToString() + "\\dicomfiles\\temp\\" + guid + ".dcm";
+                    logger.Debug($"Temp files store  path = {tempPath}");
+
                     if (!Directory.Exists(Path.GetDirectoryName(tempPath)))
                     {
+                        logger.Debug("Temp folder does not exist - creating temp folder");
                         Directory.CreateDirectory(Path.GetDirectoryName(tempPath));
                     }
                     actualPath = Path.Combine(actualPath, guid);
                     actualPath = Path.Combine(actualPath) + ".dcm";
 
                     request.File.Save(actualPath);
+                    logger.Debug($"Saving file {actualPath}");
                     request.File.Save(tempPath);
+                    logger.Debug($"Saving file {tempPath}");
 
                     return new DicomCStoreResponse(request, DicomStatus.Success);
                 }
                 catch (Exception ex)
                 {
+                    do
+                    {
+                        logger.Error(ex.Message);
+                        ex = ex.InnerException;
+                    } while (ex.InnerException != null);
 
-                    throw;
+                    return new DicomCStoreResponse(request, DicomStatus.Cancel);
                 }
             }
-            
+
         }
 
 
@@ -92,6 +109,13 @@ namespace DicomSCPService
             //        DicomRejectSource.ServiceUser,
             //        DicomRejectReason.CalledAENotRecognized);
             //}
+            logger.Debug($"Received assocciation request from :");
+            logger.Debug($"                                     AETitle :{association.CallingAE}");
+            logger.Debug($"                                     Remote Host :{association.RemoteHost}");
+            logger.Debug($"                                     Port :{association.RemotePort}");
+            
+
+
 
             foreach (var pc in association.PresentationContexts)
             {
@@ -103,22 +127,24 @@ namespace DicomSCPService
         }
         public Task OnReceiveAssociationReleaseRequestAsync()
         {
+            logger.Debug($"OnReceiveAssociationReleaseRequestAsync");
             return SendAssociationReleaseResponseAsync();
         }
         public void OnReceiveAbort(DicomAbortSource source, DicomAbortReason reason)
         {
-            Logger.Debug(reason.ToString());
+            logger.Debug($"Recieved Abort {reason.ToString()}");
         }
         public void OnConnectionClosed(Exception exception)
         {
-            Logger.Error(exception.Message);
+            logger.Error($"Connection closed {exception.Message}");
         }
         public void OnCStoreRequestException(string tempFileName, Exception e)
         {
-            Logger.Error(e.Message);
+            logger.Error($"CSTORE Request error {e.Message}");
         }
         public DicomCEchoResponse OnCEchoRequest(DicomCEchoRequest request)
         {
+            logger.Debug($"Recieved echo request {request.MessageID}");
             return new DicomCEchoResponse(request, DicomStatus.Success);
         }
     }

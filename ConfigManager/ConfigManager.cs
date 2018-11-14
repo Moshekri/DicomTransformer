@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization.Formatters.Binary;
 using Common;
+using NLog;
+
 
 namespace ConfigManager
 {
@@ -13,29 +15,40 @@ namespace ConfigManager
     {
         private Config _conf;
         private string ConfigFilePath;
-       
+       Logger logger;
+        string _path;
+
         public ConfManager(string path)
         {
+            _path = path;
+            logger = LogManager.GetCurrentClassLogger();
             ConfigFilePath = path;
             LoadConfiguration();
-            
+         
             
         }
-
+        public Config RefreshData()
+        {
+            LoadConfiguration();
+            return _conf;
+        }
         private void LoadConfiguration()
         {
+           
             string fullPath = Path.GetFullPath(ConfigFilePath);
+            logger.Debug($"Loading Configuration file from {fullPath}");
             if (!File.Exists(ConfigFilePath))
             {
+                logger.Debug($"Config file not found ! Creating new config file");
                 Config conf = new Config();
                 conf.SCPPorts.Add(104);
-                
+                conf.SCUSites = new List<Site>();
                 BinaryFormatter bf = new BinaryFormatter();
                 using (var fs = File.Open(ConfigFilePath, FileMode.OpenOrCreate))
                 {
                     bf.Serialize(fs, conf);
                 }
-               
+                logger.Debug($"New config file created : {fullPath}");
             }
             using (FileStream fs = File.Open(ConfigFilePath, FileMode.OpenOrCreate))
             {
@@ -79,13 +92,18 @@ namespace ConfigManager
         {
             return _conf;
         }
-      public void Save()
+        public void Save()
         {
             BinaryFormatter bf = new BinaryFormatter();
             using (var fs = File.Open(ConfigFilePath, FileMode.OpenOrCreate))
             {
                 bf.Serialize(fs, _conf);
             }
+        }
+        public void Save(Config conf)
+        {
+            _conf = conf;
+            Save();
         }
         
     }

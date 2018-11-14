@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicomSCPService", "DiconSCP\DicomSCPService.csproj", "{4B79DBEA-8368-4590-96DF-A4C96453A3E4}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DicomTransformerSetup", "DicomTransformerSetup\DicomTransformerSetup.vdproj", "{2F8CC047-6E05-499E-87C7-49BA192667BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,8 @@ Global
 		{4B79DBEA-8368-4590-96DF-A4C96453A3E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B79DBEA-8368-4590-96DF-A4C96453A3E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B79DBEA-8368-4590-96DF-A4C96453A3E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F8CC047-6E05-499E-87C7-49BA192667BF}.Debug|Any CPU.ActiveCfg = Debug
+		{2F8CC047-6E05-499E-87C7-49BA192667BF}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

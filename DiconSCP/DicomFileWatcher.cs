@@ -52,15 +52,17 @@ namespace DicomSCPService
 
         public void StartWatching()
         {
+            logger.Debug("Starting fileSystem watch service");
             fsw.EnableRaisingEvents = true;
         }
         public void StopWatching()
         {
+            logger.Debug("Stopping fileSystem watch service");
             fsw.EnableRaisingEvents = false;
         }
         private void NewFileCreated(object sender, FileSystemEventArgs e)
         {
-
+            logger.Debug($"new file created {e.FullPath}");
             DICOMObject file = null;
             try
             {
@@ -79,34 +81,59 @@ namespace DicomSCPService
                     }
 
                     logger.Debug($"Read file {e.Name} , it has {file.Elements.Count} elements ");
-                    file = accChanger.SetAccessionNumber(file);
-                    var accNum = file.Elements.Find(el => el.Tag.CompleteID == "00080050");
-                    logger.Debug($"Added accesstion number {accNum.DData.ToString()} to  file {e.Name} ,now it has {file.Elements.Count} elements ");
-
-                    string currentFolder = Path.GetDirectoryName(e.FullPath);
-                    string tempFolder = Path.Combine(currentFolder, "temp");
-                    string fileName = Path.GetFileName(e.FullPath);
-                    string newFileName = e.FullPath + "_New";
-                    string tempFileName = Path.Combine(tempFolder, fileName);
-                    file.Write(newFileName);
-
-
-                    try
+                    if (file!=null)
                     {
-                        DicomSCU scu = new DicomSCU();
-                        scu.Send(newFileName, targetIp, callingAeTitle, targetAeTitle, targetPort);
-                        File.Delete(e.FullPath);
-                        File.Delete(tempFileName);
-                        File.Delete(newFileName);
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.Error(ex.Message);
-                        throw;
+                        file = accChanger.SetAccessionNumber(file);
+                        if (file==null)
+                        {
+                            logger.Error($"File {e.FullPath} does not have a recognized site");
+                            // move file to bad folder
+                            string thisFolder = Path.GetDirectoryName(e.FullPath);
+                            string badFolder = Path.Combine(thisFolder, "bad");
+                            string badFullPath = Path.Combine(badFolder, e.Name);
+                            string tempF = Path.Combine(thisFolder, "temp");
+                            try
+                            {
+                                File.Move(e.FullPath, badFullPath);
+                                File.Delete(Path.Combine(tempF, e.Name));
+                            }
+                            catch (Exception ex)
+                            {
+                                logger.Error($"Error moving {e.FullPath} to {badFullPath} error : {ex.Message} ");
+                            }
+                           
+                            
+                            return;
+                        }
+                        var accNum = file.Elements.Find(el => el.Tag.CompleteID == "00080050");
+                        logger.Debug($"Added accesstion number {accNum.DData.ToString()} to  file {e.Name} ,now it has {file.Elements.Count} elements ");
+
+                        string currentFolder = Path.GetDirectoryName(e.FullPath);
+                        string tempFolder = Path.Combine(currentFolder, "temp");
+                        string fileName = Path.GetFileName(e.FullPath);
+                        string newFileName = e.FullPath + "_New";
+                        string tempFileName = Path.Combine(tempFolder, fileName);
+                        file.Write(newFileName);
+                        try
+                        {
+                            DicomSCU scu = new DicomSCU();
+                            scu.Send(newFileName, targetIp, callingAeTitle, targetAeTitle, targetPort);
+                            File.Delete(e.FullPath);
+                            File.Delete(tempFileName);
+                            File.Delete(newFileName);
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error(ex.Message);
+                            throw;
+                        }
+
+
+                        Thread.Sleep(500);
                     }
 
 
-                    Thread.Sleep(500);
+                   
                 }
 
             }
