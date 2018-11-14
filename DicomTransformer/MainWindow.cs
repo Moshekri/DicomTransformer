@@ -176,6 +176,7 @@ namespace DicomTransformer
                 dgvSites.Update();
                 dgvSites.Refresh();
             }
+            configManager.Save();
         }
 
         private void btnResetCounter_Click(object sender, EventArgs e)
