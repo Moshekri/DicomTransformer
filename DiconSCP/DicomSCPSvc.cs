@@ -15,6 +15,7 @@ using Dicom;
 using NLog;
 using Dicom.Network;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace DicomSCPService
 {
@@ -36,12 +37,34 @@ namespace DicomSCPService
 
             DicomFilesPath = ConfigurationManager.AppSettings["DicomStorePath"];
             logger.Debug($"save file path :{DicomFilesPath}");
-          
+
             InitializeComponent();
             ConfManager = new ConfManager(ConfigurationManager.AppSettings["ConfigFilePath"]);
             configuration = ConfManager.GetConfiguration();
-            
+            CheckFilesAndFolders();
+
         }
+
+        private void CheckFilesAndFolders()
+        {
+            string StorePath = ConfigurationManager.AppSettings["DicomStorePath"];
+            string tempPath = Path.Combine(StorePath, "temp");
+            string badPath = Path.Combine(StorePath, "bad");
+            if (!Directory.Exists(StorePath))
+            {
+                Directory.CreateDirectory(StorePath);
+            }
+            if (!Directory.Exists(tempPath))
+            {
+                Directory.CreateDirectory(tempPath);
+            }
+            if (!Directory.Exists(badPath))
+            {
+                Directory.CreateDirectory(badPath);
+            }
+        }
+
+
         public void OnDebug(string[] args)
         {
             OnStart(null);
@@ -59,14 +82,14 @@ namespace DicomSCPService
             // preload dictionary to prevent timeouts
             var dict = DicomDictionary.Default;
 
-            int port =int.Parse( ConfigurationManager.AppSettings["OwnListenPort"]);
+            int port = int.Parse(ConfigurationManager.AppSettings["OwnListenPort"]);
             if (port == 0)
             {
                 port = 104;
             }
 
             logger.Info($"Starting Dicome Storage Service on port {port}");
-            
+
             server = DicomServer.Create<DicomStorageProvider>(port);
             logger.Debug($"Created Server on port {port}");
             watcher = new DicomFileWatcher(DicomFilesPath);
@@ -88,7 +111,7 @@ namespace DicomSCPService
             serviceStatus.dwCurrentState = ServiceState.SERVICE_STOP_PENDING;
             serviceStatus.dwWaitHint = 100000;
             SetServiceStatus(this.ServiceHandle, ref serviceStatus);
-            
+
             server.Stop();
             watcher.StopWatching();
             base.OnShutdown();
@@ -97,7 +120,7 @@ namespace DicomSCPService
             serviceStatus.dwCurrentState = ServiceState.SERVICE_STOPPED;
             SetServiceStatus(this.ServiceHandle, ref serviceStatus);
         }
-        
+
     }
 }
 public enum ServiceState

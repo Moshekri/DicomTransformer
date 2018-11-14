@@ -36,6 +36,11 @@ namespace ConfigManager
         {
            
             string fullPath = Path.GetFullPath(ConfigFilePath);
+            string configDirPath = Path.GetDirectoryName(fullPath);
+            if (!Directory.Exists(configDirPath))
+            {
+                Directory.CreateDirectory(configDirPath);
+            }
             logger.Debug($"Loading Configuration file from {fullPath}");
             if (!File.Exists(ConfigFilePath))
             {
