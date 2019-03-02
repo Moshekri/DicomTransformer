@@ -116,15 +116,18 @@ namespace DicomSCPService
                         file.Write(newFileName);
                         try
                         {
+                            logger.Info($"Trying to send file to {targetIp} with AE Title {targetAeTitle} at port {targetPort} ");
                             DicomSCU scu = new DicomSCU();
                             scu.Send(newFileName, targetIp, callingAeTitle, targetAeTitle, targetPort);
+                            logger.Info("Send operation is successfull !");
                             File.Delete(e.FullPath);
                             File.Delete(tempFileName);
                             File.Delete(newFileName);
                         }
                         catch (Exception ex)
                         {
-                            logger.Error(ex.Message);
+
+                            logger.Debug("$Could not sent file to destination failed with message : {ex.Message}");
                             throw;
                         }
 
